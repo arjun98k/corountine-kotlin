@@ -1,6 +1,6 @@
 
 import kotlin.concurrent.thread
-
+// note main thread wait for to finish all background thread work
 fun main() {
     println("Main program start ${Thread.currentThread().name}")
 
