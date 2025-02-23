@@ -5,8 +5,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 // note main thread wait for to finish all background thread work
-fun main() {
-    println("Main program start ${Thread.currentThread().name}")
+fun main() = runBlocking { // Execute main thread
+    println("Main program start ${Thread.currentThread().name}") // main threas
 
 //    thread {
 //        println("fake work started ${Thread.currentThread().name}")
@@ -15,8 +15,8 @@ fun main() {
 //        // runnung parallel and do not block main thread program
 //    }
 
-   GlobalScope.launch  {
-        println("fake work started ${Thread.currentThread().name}")
+   GlobalScope.launch  { // Thread T1
+        println("fake work started ${Thread.currentThread().name}")  // Thread: T1
         delay(2000) // Corountine is supported but thread: T1 is free (not block)
         println("Main work finished: ${Thread.currentThread().name} ") //Either T1 or some other thread
         // runnung parallel and do not block main thread program
@@ -26,9 +26,17 @@ fun main() {
 //    Thread.sleep(3000)
 //    practically useless for real project
 
-    runBlocking {
-        delay(3000) // wait for corountine to finish (practically not a right to wait)
-    }
+
+//        delay(3000) // wait for corountine to finish (practically not a right to wait)
+          mySusfun(3000)
     println("Main program End ${Thread.currentThread().name}")
+
+
+}
+
+suspend fun  mySusfun(time: Long)
+{
+    // code
+    delay(time)
 }
 
