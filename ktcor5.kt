@@ -20,5 +20,5 @@ fun main()= runBlocking { // create a blocking corountine that exexcutes in curr
         }
 
     }
-    println("\n Main program ends: ${Thread.currentThread().name}")
+    println("\n Main program ends: ${Thread.currentThread().name}") // main Thread
 }
